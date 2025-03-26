@@ -1,0 +1,11 @@
+tag: TinyTag = TinyTag.get('./Music/MCLS.mp3', image=True)
+image: TTimage | None = tag.images.any
+if image is not None:
+    data: bytes = image.data
+    name: str = image.name
+    mime_type: str = image.mime_type
+    description: str = image.description
+
+pi = Image.open(io.BytesIO(image.data))
+
+pi.save('cover.png')
